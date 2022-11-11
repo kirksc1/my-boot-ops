@@ -8,9 +8,11 @@
 name: Validate
 
 on:
-  push:
+  pull_request:
+    types: 
+      - synchronize
     branches:
-      - '**'
+      - main
 
 permissions:
   contents: read
