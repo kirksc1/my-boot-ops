@@ -9,7 +9,8 @@ name: Validate
 
 on:
   pull_request:
-    types: 
+    types:
+      - create
       - synchronize
     branches:
       - main
