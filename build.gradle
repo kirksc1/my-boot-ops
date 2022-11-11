@@ -1,0 +1,39 @@
+
+repositories {
+    repositories {
+        mavenCentral()
+        maven {
+            // Choose whatever name you like
+            name = "GitHubPackages"
+            // The url of the repository that contains the published artifacts
+            url = "https://maven.pkg.github.com/kirksc1/boot-ops"
+            credentials {
+                // The credentials (described in the next section)
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_CRED")
+            }
+        }
+    }
+}
+
+configurations {
+    bootOps
+}
+
+dependencies {
+    bootOps 'com.github.kirksc1.bootops:boot-ops:0.0.1-SNAPSHOT'
+}
+
+task validate (type: JavaExec){
+    description = "Validate items"
+    mainClass  = 'com.github.kirksc1.bootops.cli.BootOpsConsoleApplication'
+    classpath = configurations.bootOps
+    args '--command=validate'
+}
+
+task converge (type: JavaExec){
+    description = "Converge items"
+    mainClass  = 'com.github.kirksc1.bootops.cli.BootOpsConsoleApplication'
+    classpath = configurations.bootOps
+    args '--command=converge'
+}
