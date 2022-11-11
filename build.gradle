@@ -10,7 +10,7 @@ repositories {
             credentials {
                 // The credentials (described in the next section)
                 username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_CRED")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
